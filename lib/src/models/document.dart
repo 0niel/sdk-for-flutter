@@ -27,6 +27,9 @@ class Document implements Model {
     });
 
     factory Document.fromMap(Map<String, dynamic> map) {
+        if (map['\$permissions'] is Map) {
+            map['\$permissions'] = map['\$permissions'].values.toList();
+        }
         return Document(
             $id: map['\$id'].toString(),
             $collectionId: map['\$collectionId'].toString(),
